@@ -27,11 +27,19 @@ class Game {
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         ];
+<<<<<<< HEAD
         this.randonApple();
     }
     startGame(){
         let id = setInterval(()=>{
             switch(this.snake.direction){
+=======
+        this.apple = [Math.floor(Math.random() * this.matriz.length),Math.floor(Math.random() * this.matriz.length)];
+    }
+    startGame(){
+        let id = setInterval(()=>{
+            switch(this.snake.olhando){
+>>>>>>> 47b3fc0b7ff94c5bc1ef80ef4a2420d152c22a49
                 case 'up':
                     this.snake.moveUp();
                     break;
@@ -48,6 +56,7 @@ class Game {
                     break;
             }
             this.updateMatriz();
+<<<<<<< HEAD
         },1000)
     }
     randonApple(){
@@ -64,6 +73,13 @@ class Game {
     }
     createMatriz(){
         this.matriz[this.snake.positionY][this.snake.positionX] = 1;
+=======
+        },100)
+    }
+    createMatriz(){
+        this.matriz[this.snake.positionY][this.snake.positionX] = 1;
+        this.matriz[this.apple[0]][this.apple[1]] = 2;
+>>>>>>> 47b3fc0b7ff94c5bc1ef80ef4a2420d152c22a49
         this.matriz.forEach((itens,index1)=> {
             let row = document.createElement('div');
                 row.setAttribute ('class', 'row');
@@ -87,6 +103,7 @@ class Game {
         this.matriz[this.snake.positionY][this.snake.positionX] = 1;
         this.matriz.forEach((itens,index1) => {
             itens.forEach((item,index2) => {
+<<<<<<< HEAD
                 let element = document.getElementById(`${index1}, ${index2}`);
                 element.classList.remove('apple');
                 element.classList.remove('headSnake');
@@ -99,11 +116,34 @@ class Game {
                 }
                 if(item === 3){
                     element.classList.add('bodySnake');
+=======
+                if(item === 1){
+                    let head = document.getElementById(`${index1}, ${index2}`);
+                        head.classList.remove('apple');
+                        head.classList.remove('bodySnake');
+                        head.classList.add('headSnake');
+                }
+                if(item === 0){
+                    let blank = document.getElementById(`${index1}, ${index2}`);
+                        blank.classList.remove('apple');
+                        blank.classList.remove('headSnake');
+                        blank.classList.remove('bodySnake');
+                }
+                if(item === 3){
+                    let body = document.getElementById(`${index1}, ${index2}`);
+                        body.classList.remove('apple');
+                        body.classList.remove('headSnake');
+                        body.classList.remove('bodySpace');
+                        body.classList.add('bodySnake');
+>>>>>>> 47b3fc0b7ff94c5bc1ef80ef4a2420d152c22a49
                 }
             });
         });
     };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 47b3fc0b7ff94c5bc1ef80ef4a2420d152c22a49
     //     let snake = document.getElementsByClassName('headSnake')[0];
     //     let tail = document.querySelectorAll('.bodySnake');
     //         // Create Random Apple on Matriz
