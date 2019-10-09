@@ -37,6 +37,7 @@ function capitalLetterStartGame () {
 }
 function startSnake(){
     let parentInitial = document.getElementById('matriz');
+        parentInitial.style.backgroundColor ='rgba(245, 245, 245, 0.534)';
     let initial = document.getElementById('initial');
     parentInitial.removeChild(initial);
         game.randonApple();

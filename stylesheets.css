@@ -66,6 +66,7 @@
     height: 20px;
     margin-bottom: 5px;
     color: black;
+    font-weight: bolder;
 }
 #initial label {
     color: red;
