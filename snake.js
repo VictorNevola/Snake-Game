@@ -10,12 +10,10 @@ class Snake {
         this.dead = false;
     }
     moveUp(){
-            if(this.dead == false){
+            if(this.dead === false){
                 this.positionY --;
-                if(this.positionY < 0){
-                    clearInterval(game.movements);
-                    this.dead = true;
-                }else {
+                let checkPosition = this.checkIfSnakeHit();
+                if(checkPosition === false){
                     this.prevX = this.positionX;
                     this.prevY = this.positionY;
                     this.direction = 'up';
@@ -26,12 +24,10 @@ class Snake {
             }
     }
     moveDown(){
-            if(this.dead == false){
+            if(this.dead === false){
                 this.positionY ++;
-                if(this.positionY > game.matriz.length - 1){
-                    clearInterval(game.movements);
-                    this.dead = true;
-                }else{
+                let checkPosition = this.checkIfSnakeHit();
+                if(checkPosition === false){
                     this.prevX = this.positionX;
                     this.prevY = this.positionY;
                     this.direction = 'down';
@@ -42,12 +38,10 @@ class Snake {
             }
     }
     moveRight(){
-            if(this.dead == false){
+            if(this.dead === false){
                 this.positionX ++;
-                if(this.positionX > game.matriz[this.positionY].length - 1){
-                    clearInterval(game.movements);
-                    this.dead = true;
-                }else{
+                let checkPosition = this.checkIfSnakeHit();
+                if(checkPosition === false){
                     this.prevX = this.positionX;
                     this.prevY = this.positionY;
                     this.direction = 'right';
@@ -60,11 +54,8 @@ class Snake {
     moveLeft(){
             if(this.dead == false){
                 this.positionX --;
-                if(this.positionX < 0 ){
-                    clearInterval(game.movements);
-                    this.dead = true;
-                }
-                else{
+                let checkPosition = this.checkIfSnakeHit();
+                if(checkPosition === false){
                     this.prevX = this.positionX;
                     this.prevY = this.positionY;
                     this.direction = 'left';
@@ -73,5 +64,14 @@ class Snake {
                     game.createBodySnake();
                 }
             }
+    }
+    checkIfSnakeHit(){
+            if(this.positionY < 0 || this.positionX < 0 || this.positionY > game.matriz.length - 1
+                || this.positionX > game.matriz[this.positionY].length - 1 || game.matriz[this.positionY][this.positionX] === 3){
+                clearInterval(game.movements);
+                this.dead = true;
+                return true;
+            }
+            return false;
     }
 }
