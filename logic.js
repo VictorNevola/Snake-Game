@@ -27,9 +27,10 @@ class Game {
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         ];
+        this.movements;
     }
     startGame(){
-        let id = setInterval(()=>{
+        this.movements = setInterval(()=>{
             switch(this.snake.direction){
                 case 'up':
                     this.snake.moveUp();
@@ -66,8 +67,8 @@ class Game {
             }
     }
     createBodySnake(){
-            let diference = this.snake.bodySnake.length - this.snake.size;
-            let remove = this.snake.bodySnake.splice(this.snake.size, diference);
+        let diference = this.snake.bodySnake.length - this.snake.size;
+        let remove = this.snake.bodySnake.splice(this.snake.size, diference);
             this.snake.bodySnake.forEach((element,index)=>{
                 if(index === 0 ){
                     this.matriz[element[0]][element[1]] = 1;
