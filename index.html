@@ -15,13 +15,20 @@
         <h2>SNAKE GAME</h2>
     </header>
     <div id = 'game'>
-        <div id = 'comands'>Score</div>
-        <div id = 'matriz'></div>
-        <div id = 'Ranking'>Ranking</div>
+        <div id = 'comands'>SCORE</div>
+        <div id = 'matriz'>
+            <div id = 'initial'>
+            <label>NAME:<input id='input' type="text" maxlength="20" title="Put your name here"> </label>
+            <button id = 'start' class = "buttonDefault" disabled = 'true'> START GAME </button>
+            <h2>Commands</h2>
+            <img src="./imagens/wasd-keys.png" alt="W-A-S-D.logo">
+            </div>
+        </div>
+        <div id = 'Ranking'>RANKING</div>
     </div>
     </div>
     <script src="./snake.js"></script>
     <script src="./logic.js"></script>
-    <script src = "./main.js"></script>
+    <script src="./main.js"></script>
 </body>
 </html>

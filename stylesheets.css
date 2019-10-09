@@ -27,7 +27,7 @@
 }
 #game{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     margin: 1% 5%;
 }
 #matriz{
@@ -37,20 +37,65 @@
     box-shadow: 0px 0px 27px 0px rgba(0,0,0,1.85);
 }
 .column{
-    border: 1px solid rgba(26, 24, 24, 0.55);
-    box-shadow: 0px 0px 27px 0px rgba(0,0,0,1.85);
     height: 20px;
     width: 20px;
+    border: 1px solid rgba(0,0,0,0);
 }
 .row{
     display: flex;
 }
 .headSnake{
-    background-color: green;
+    background-color: black;
 }
 .apple{
     background-color: red;
 }
 .bodySnake{
-    background-color: black;
+    background-color: chartreuse;
+}
+#initial {
+    display: grid;
+    justify-content: center;
+    margin: 33% 100px;
+    visibility: visible;
+    font-family: 'Courier New', Courier, monospace,'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+#initial input {
+    border: none;
+    background: rgba(255, 255, 255, 0.637);
+    width: 85%;
+    height: 20px;
+    margin-bottom: 5px;
+    color: black;
+}
+#initial label {
+    color: whitesmoke;
+    font-size: 17px;
+}
+.buttonDefault{
+    border: none;
+    background-color: rgba(255, 0, 0, 0.774);
+    box-shadow: 0px 0px 27px 0px rgba(0,0,0,1.85);
+    color: white;
+    font-size: 17px;
+    height: 25px;
+    cursor: not-allowed;
+}
+.buttonStartGame {
+    border: none;
+    background-color: rgba(94, 255, 0, 0.774);
+    box-shadow: 0px 0px 27px 0px rgba(0,0,0,1.85);
+    color: white;
+    font-size: 17px;
+    height: 25px;
+    cursor: pointer;
+}
+#initial h2{
+    text-align: center;
+    margin-top: 15px;
+    color: whitesmoke;
+}
+#initial img{
+    margin: 0px 130px;
+    width: 25%;
 }
