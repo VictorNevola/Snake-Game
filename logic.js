@@ -31,6 +31,7 @@ class Game {
     }
     startGame(){
         this.movements = setInterval(()=>{
+            console.log('time')
             switch(this.snake.direction){
                 case 'up':
                     this.snake.moveUp();
@@ -65,6 +66,7 @@ class Game {
                 this.randonApple();
                 this.snake.size += 1;
                 this.snake.pontuation += 1;
+                updateScore();
             }
     }
     createBodySnake(){
@@ -133,6 +135,6 @@ class Game {
         this.snake.size = 1;
         this.snake.positionY = 10;
         this.snake.positionX = 5;
-        this.snake.bodySnake = [[this.positionY, this.positionX]];
+        this.snake.bodySnake = [[this.snake.positionY, this.snake.positionX]];
     }
 }

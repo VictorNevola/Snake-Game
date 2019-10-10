@@ -1,8 +1,10 @@
-let snake = new Snake(10,5);
-let game = new Game(snake);
+let snake;
+let game;
+let twoScore = false;
 let input = document.getElementById('input').onchange = function() {capitalLetterStartGame()};
 let startGame = document.getElementById('start').onclick = function() {startSnake()};
 let retry = document.getElementById('retry').onclick = function(){playAgain()};
+let newPlay = document.getElementById('newPlay').onclick = function(){newPlayer()};
 
 function moveSnake (keyPress){
     switch (keyPress.key){
@@ -37,32 +39,39 @@ function capitalLetterStartGame () {
     }
 }
 function startSnake(){
+    snake = new Snake(10,5);
+    game = new Game(snake);
     let parentInitial = document.getElementById('matriz');
         parentInitial.style.backgroundColor ='rgba(245, 245, 245, 0.534)';
     let initial = document.getElementById('initial');
-    parentInitial.removeChild(initial);
-        game.randonApple();
-        game.createBodySnake();
-        game.createMatriz();
-        game.startGame();
-        document.addEventListener('keypress', moveSnake);
-        updateScore();
-}
-function updateScore(){
-    let parentScore = document.getElementById('score');
-    let h3 = document.createElement('h3');
-        parentScore.appendChild(h3);
-        intervalScore = setInterval(()=>{
-            h3.innerText = `${snake.pontuation}`
-        },10);
-}
-function playAgain(){
-    let gameOver = document.getElementById('gameOver').remove();
+    if(initial){
+        initial.style.display = 'none';
+        initial.style.visibility = 'hidden';
+    }
     game.randonApple();
     game.createBodySnake();
     game.createMatriz();
     game.startGame();
     document.addEventListener('keypress', moveSnake);
-    updateScore();
-    
+    createScore()
+}
+function createScore(){
+    let parentScore = document.querySelector('#score>ol');
+    let list = document.createElement('li');
+        list.innerHTML = '0';
+    parentScore.appendChild(list);
+}
+function updateScore(){
+            let li = document.querySelector('#score>ol').lastElementChild;
+                li.innerText = `${snake.pontuation}`;
+}
+function playAgain(){
+    let screenGameOver = document.getElementById('gameOver');
+        screenGameOver.style.display = 'none';
+        screenGameOver.style.visibility = 'hidden';
+        twoScore = true;
+    return startSnake();
+}
+function newPlayer(){
+
 }
