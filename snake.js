@@ -6,6 +6,7 @@ class Snake {
         this.prevX ;
         this.prevY ;
         this.size = 1;
+        this.pontuation = 0;
         this.bodySnake = [[this.positionY, this.positionX]];
         this.dead = false;
     }
@@ -20,7 +21,7 @@ class Snake {
                     this.bodySnake.unshift([this.positionY, this.positionX]);
                     game.checkIfEatApple();
                     game.createBodySnake();
-                }
+                }else{game.gameOver()};
             }
     }
     moveDown(){
@@ -34,7 +35,7 @@ class Snake {
                     this.bodySnake.unshift([this.positionY, this.positionX]);
                     game.checkIfEatApple();
                     game.createBodySnake();
-                }
+                }else{game.gameOver()};
             }
     }
     moveRight(){
@@ -48,7 +49,7 @@ class Snake {
                     this.bodySnake.unshift([this.positionY, this.positionX]);
                     game.checkIfEatApple();
                     game.createBodySnake();
-                }
+                }else{game.gameOver()};
             }
     }
     moveLeft(){
@@ -62,7 +63,7 @@ class Snake {
                     this.bodySnake.unshift([this.positionY, this.positionX]);
                     game.checkIfEatApple();
                     game.createBodySnake();
-                }
+                }else{game.gameOver()};
             }
     }
     checkIfSnakeHit(){

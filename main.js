@@ -46,5 +46,6 @@ function startSnake(){
         game.startGame();
         document.addEventListener('keypress', moveSnake);
 }
+
  
 

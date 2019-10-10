@@ -50,6 +50,19 @@ class Game {
             this.updateMatriz();
         },1000);
     }
+    gameOver(){
+        let matriz = document.getElementById('matriz');
+        var div = document.createElement('div');
+            div.innerHTML = `<h2> Game Over </h2>
+                Your Score in this round was 
+                ${this.snake.pontuation}
+            `
+        matriz.appendChild(div);
+        let row = document.querySelectorAll('.row');
+        row.forEach(element => {
+            element.remove();
+        })
+    }
     randonApple(){
         let randomPositionY = Math.floor(Math.random() * this.matriz.length);
         let randomPositionX = Math.floor(Math.random() * this.matriz.length);
@@ -64,6 +77,7 @@ class Game {
             if(positionHeadSnake == 2){
                 this.randonApple();
                 this.snake.size += 1;
+                this.snake.pontuation += 1;
             }
     }
     createBodySnake(){
