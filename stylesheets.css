@@ -45,7 +45,9 @@
     display: flex;
 }
 .headSnake{
-    background-color: black;
+    background-image: url('./imagens/headsnake.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .apple{
     background-color: red;
@@ -98,5 +100,28 @@
 }
 #initial img{
     margin: 0px 130px;
-    width: 25%;
+    width: 35%;
+}
+.GameOver{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20%;
+    align-items: center;
+}
+.GameOver img{
+    width: 85px;
+}
+.GameOver h2{
+    color: red;
+    font-size: 30px;
+}
+.GameOver p {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.buttonGameOver{
+    border: none;
+    background-color: rgba(255, 0, 0, 0.774);
+    width: 100px;
 }

@@ -50,19 +50,6 @@ class Game {
             this.updateMatriz();
         },1000);
     }
-    gameOver(){
-        let matriz = document.getElementById('matriz');
-        var div = document.createElement('div');
-            div.innerHTML = `<h2> Game Over </h2>
-                Your Score in this round was 
-                ${this.snake.pontuation}
-            `
-        matriz.appendChild(div);
-        let row = document.querySelectorAll('.row');
-        row.forEach(element => {
-            element.remove();
-        })
-    }
     randonApple(){
         let randomPositionY = Math.floor(Math.random() * this.matriz.length);
         let randomPositionX = Math.floor(Math.random() * this.matriz.length);
@@ -114,22 +101,42 @@ class Game {
         });
     }
     updateMatriz(){
-        this.matriz.forEach((itens,index1) => {
-            itens.forEach((item,index2) => {
-                let element = document.getElementById(`${index1}, ${index2}`);
-                element.classList.remove('apple');
-                element.classList.remove('headSnake');
-                element.classList.remove('bodySnake');
-                if(item === 1){
-                    element.classList.add('headSnake');
-                }
-                if(item === 2){
-                    element.classList.add('apple');
-                }
-                if(item === 3){
-                    element.classList.add('bodySnake');
-                }
+        if(this.snake.dead === false){
+            this.matriz.forEach((itens,index1) => {
+                itens.forEach((item,index2) => {
+                    let element = document.getElementById(`${index1}, ${index2}`);
+                    element.classList.remove('apple');
+                    element.classList.remove('headSnake');
+                    element.classList.remove('bodySnake');
+                    if(item === 1){
+                        element.classList.add('headSnake');
+                    }
+                    if(item === 2){
+                        element.classList.add('apple');
+                    }
+                    if(item === 3){
+                        element.classList.add('bodySnake');
+                    }
+                });
             });
-        });
-    };
+        };
+        }
+    gameOver(){
+        let matriz = document.getElementById('matriz');
+        var div = document.createElement('div');
+            div.setAttribute('class', 'GameOver');
+            div.innerHTML = `<img src="./imagens/gameOver.gif" alt="GameOver.logo" title='YOU ARE DEAD'>	
+                <h2> Game Over </h2>
+                <p>Your score in this round was 
+                ${this.snake.pontuation}</P>
+                <div id = 'buttons' class = "buttonGameOver"> </div>
+                <button id = 'retry' class = "buttonGameOver"> PLAY AGAIN </button>
+                <button id = 'newPlay' class = "buttonGameOver"> NEW PLAYER </button>
+            `
+        matriz.appendChild(div);
+        let row = document.querySelectorAll('.row');
+        row.forEach(element => {
+            element.remove();
+        })
+    }
 }
