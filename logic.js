@@ -122,22 +122,17 @@ class Game {
         };
         }
     gameOver(){
-        let matriz = document.getElementById('matriz');
-        var div = document.createElement('div');
-            div.setAttribute('class', 'GameOver');
-            div.innerHTML = `<img src="./imagens/gameOver.gif" alt="GameOver.logo" title='YOU ARE DEAD'>	
-                <h2> Game Over </h2>
-                <p>Your score in this round was 
-                ${this.snake.pontuation}</P>
-                <div id = 'buttons' class = "buttonGameOver"> 
-                <button id = 'retry'> PLAY AGAIN </button>
-                <button id = 'newPlay'> NEW PLAYER </button>
-                </div>
-            `
-        matriz.appendChild(div);
+        let screenGameOver = document.getElementById('gameOver');
+            screenGameOver.style.display ='flex';
+            screenGameOver.style.visibility = 'visible';
+            screenGameOver.getElementsByTagName('p')[0].innerText = `Your score in this round was ${snake.pontuation}`
         let row = document.querySelectorAll('.row');
         row.forEach(element => {
             element.remove();
         })
+        this.snake.size = 1;
+        this.snake.positionY = 10;
+        this.snake.positionX = 5;
+        this.snake.bodySnake = [[this.positionY, this.positionX]];
     }
 }

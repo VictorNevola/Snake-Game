@@ -1,7 +1,8 @@
 let snake = new Snake(10,5);
 let game = new Game(snake);
 let input = document.getElementById('input').onchange = function() {capitalLetterStartGame()};
-let button = document.getElementById('start').onclick = function() {startSnake()};   
+let startGame = document.getElementById('start').onclick = function() {startSnake()};
+let retry = document.getElementById('retry').onclick = function(){playAgain()};
 
 function moveSnake (keyPress){
     switch (keyPress.key){
@@ -48,7 +49,6 @@ function startSnake(){
         updateScore();
 }
 function updateScore(){
-    let intervalScore;
     let parentScore = document.getElementById('score');
     let h3 = document.createElement('h3');
         parentScore.appendChild(h3);
@@ -56,5 +56,13 @@ function updateScore(){
             h3.innerText = `${snake.pontuation}`
         },10);
 }
- 
-
+function playAgain(){
+    let gameOver = document.getElementById('gameOver').remove();
+    game.randonApple();
+    game.createBodySnake();
+    game.createMatriz();
+    game.startGame();
+    document.addEventListener('keypress', moveSnake);
+    updateScore();
+    
+}

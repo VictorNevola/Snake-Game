@@ -100,20 +100,21 @@
     margin: 0px 130px;
     width: 35%;
 }
-.GameOver{
-    display: flex;
+#gameOver{
+    display: none;
     flex-direction: column;
     margin-top: 20%;
     align-items: center;
+    visibility: hidden;
 }
-.GameOver img{
+#gameOver img{
     width: 85px;
 }
-.GameOver h2{
+#gameOver h2{
     color: rgba(255, 0, 0, 0.774);
     font-size: 30px;
 }
-.GameOver p {
+#gameOver p {
     font-size: 25px;
     font-weight: bold;
     margin-bottom: 15px;
@@ -130,6 +131,7 @@
     color: whitesmoke;
     font-size: 17px;
     font-weight: bold;
+    cursor: pointer;
 }
 #score, #ranking{
     color: whitesmoke;
