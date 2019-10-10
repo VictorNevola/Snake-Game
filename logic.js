@@ -129,9 +129,10 @@ class Game {
                 <h2> Game Over </h2>
                 <p>Your score in this round was 
                 ${this.snake.pontuation}</P>
-                <div id = 'buttons' class = "buttonGameOver"> </div>
-                <button id = 'retry' class = "buttonGameOver"> PLAY AGAIN </button>
-                <button id = 'newPlay' class = "buttonGameOver"> NEW PLAYER </button>
+                <div id = 'buttons' class = "buttonGameOver"> 
+                <button id = 'retry'> PLAY AGAIN </button>
+                <button id = 'newPlay'> NEW PLAYER </button>
+                </div>
             `
         matriz.appendChild(div);
         let row = document.querySelectorAll('.row');

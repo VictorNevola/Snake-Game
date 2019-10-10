@@ -45,7 +45,16 @@ function startSnake(){
         game.createMatriz();
         game.startGame();
         document.addEventListener('keypress', moveSnake);
+        updateScore();
 }
-
+function updateScore(){
+    let intervalScore;
+    let parentScore = document.getElementById('score');
+    let h3 = document.createElement('h3');
+        parentScore.appendChild(h3);
+        intervalScore = setInterval(()=>{
+            h3.innerText = `${snake.pontuation}`
+        },10);
+}
  
 
