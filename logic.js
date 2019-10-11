@@ -33,10 +33,12 @@ class Game {
     }
     changeTime = () => {
         this.movements = clearInterval(this.movements);
-        if(this.snake.pontuation <= 10){
+        if(this.snake.pontuation <= 5){
             this.time = 1000;
+        }else if(this.snake.pontuation <= 20){
+            this.time = 400;
         }else{
-            this.time = this.time - 100;
+            this.time = 100;
         }
         this.startGame();
     }
@@ -47,6 +49,7 @@ class Game {
         this.movements = setInterval(this.startMovements,this.time);
     }
     startMovements = ()=>{
+        console.log(this.time)
         switch(this.snake.direction){
             case 'up':
                 this.snake.moveUp();
