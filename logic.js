@@ -28,30 +28,44 @@ class Game {
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
         ];
         this.movements;
+        this.time = 1000;
+        this.updateIntervalId;
     }
-    startGame(){
-        this.movements = setInterval(()=>{
-            console.log('time')
-            switch(this.snake.direction){
-                case 'up':
-                    this.snake.moveUp();
-                    break;
-                case 'down':
-                    this.snake.moveDown();
-                    break;
-                case 'left':
-                    this.snake.moveLeft();
-                    break;
-                case 'right':
-                    this.snake.moveRight();
-                    break;
-                default:
-                    break;
-            }
-            this.updateMatriz();
-        },1000);
+    changeTime = () => {
+        this.movements = clearInterval(this.movements);
+        if(this.snake.pontuation <= 1){
+            this.time = 1000;
+        }else{
+            this.time = 100;
+        }
+        this.startGame();
     }
-    randonApple(){
+    updateTime = () => {
+       this.updateIntervalId = setTimeout(this.changeTime,1);
+    }
+    startGame = () => {
+        this.movements = setInterval(this.startMovements,this.time);
+    }
+    startMovements = ()=>{
+        switch(this.snake.direction){
+            case 'up':
+                this.snake.moveUp();
+                break;
+            case 'down':
+                this.snake.moveDown();
+                break;
+            case 'left':
+                this.snake.moveLeft();
+                break;
+            case 'right':
+                this.snake.moveRight();
+                break;
+            default:
+                break;
+        }
+        this.updateMatriz();
+    }
+    randonApple =() => {
         let randomPositionY = Math.floor(Math.random() * this.matriz.length);
         let randomPositionX = Math.floor(Math.random() * this.matriz.length);
         while(this.matriz[randomPositionY][randomPositionX] != 0){
@@ -60,16 +74,17 @@ class Game {
         };
         this.matriz[randomPositionY][randomPositionX] = 2;
     }
-    checkIfEatApple(){
+    checkIfEatApple = () => {
         let positionHeadSnake = this.matriz[this.snake.positionY][this.snake.positionX];
             if(positionHeadSnake == 2){
                 this.randonApple();
                 this.snake.size += 1;
                 this.snake.pontuation += 1;
                 updateScore();
+                this.updateTime();
             }
     }
-    createBodySnake(){
+    createBodySnake = () =>{
         let diference = this.snake.bodySnake.length - this.snake.size;
         let remove = this.snake.bodySnake.splice(this.snake.size, diference);
             this.snake.bodySnake.forEach((element,index)=>{
@@ -83,7 +98,7 @@ class Game {
                 this.matriz[element[0]][element[1]] = 0;
             })
     }
-    createMatriz(){
+    createMatriz = () => {
         this.matriz.forEach((itens,index1)=> {
             let row = document.createElement('div');
                 row.setAttribute ('class', 'row');
@@ -102,7 +117,7 @@ class Game {
             matrizDiv.appendChild(row);
         });
     }
-    updateMatriz(){
+    updateMatriz = () => {
         if(this.snake.dead === false){
             this.matriz.forEach((itens,index1) => {
                 itens.forEach((item,index2) => {
@@ -123,7 +138,7 @@ class Game {
             });
         };
         }
-    gameOver(){
+    gameOver = () => {
         let screenGameOver = document.getElementById('gameOver');
             screenGameOver.style.display ='flex';
             screenGameOver.style.visibility = 'visible';
