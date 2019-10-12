@@ -33,10 +33,10 @@ class Game {
     }
     changeTime = () => {
         this.movements = clearInterval(this.movements);
-        if(this.snake.pontuation <= 5){
+        if(this.snake.pontuation <= 5 ){
             this.time = 1000;
-        }else if(this.snake.pontuation <= 20){
-            this.time = 400;
+        }else if(this.snake.pontuation <= 15){
+            this.time = 300;
         }else{
             this.time = 100;
         }
@@ -49,7 +49,6 @@ class Game {
         this.movements = setInterval(this.startMovements,this.time);
     }
     startMovements = ()=>{
-        console.log(this.time)
         switch(this.snake.direction){
             case 'up':
                 this.snake.moveUp();
@@ -79,7 +78,9 @@ class Game {
     }
     checkIfEatApple = () => {
         let positionHeadSnake = this.matriz[this.snake.positionY][this.snake.positionX];
-            if(positionHeadSnake == 2){
+        if(positionHeadSnake == 2){
+            let audio = new Audio('./sons/eatSound.mp3');
+                audio.play();
                 this.randonApple();
                 this.snake.size += 1;
                 this.snake.pontuation += 1;
@@ -142,6 +143,8 @@ class Game {
         };
         }
     gameOver = () => {
+        let diedSound = new Audio('./sons/diedSound.mp3');
+            diedSound.play();
         let screenGameOver = document.getElementById('gameOver');
             screenGameOver.style.display ='flex';
             screenGameOver.style.visibility = 'visible';
